@@ -1,7 +1,7 @@
 # @typhonjs-plugin/demo-hmr-snowpack
 
 This is a basic demo of using [@typhonjs-plugin/manager](https://github.com/typhonjs-node-plugin/manager) via Snowpack 
-with HMR (hot module reload).
+with HMR (hot module replacement).
 
 This demo was created with `@snowpack/app-template-blank` which has a confetti explosion display during initial load / 
 when page is refreshed. In addition, the TyphonJS plugin manager and three basic local plugins demonstrate how easy it 
