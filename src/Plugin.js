@@ -61,7 +61,7 @@ class Plugin
    {
       console.log('Plugin - onPluginUnload');
 
-      // Save state between plugin unload to load during the HMR reload.
+      // Save state between plugin unload to load during HMR.
       ev.data.state = { cntr: ++this.cntr };
 
       // Unregister the increment event listener.
