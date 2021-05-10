@@ -4,6 +4,9 @@
  * Registers an event on 'test:plugin:cntr:get' to trigger `getCntr`. When this plugin is reloaded
  * `Plugin2` listens for the reload event and invokes the `test:plugin:cntr:get` event to retrieve
  * the cntr which is preserved as state across hot reloads.
+ *
+ * When HMR kicks off and a plugin is reloaded all event bindings are removed and added to the new module loaded
+ * in `onPluginLoad`.
  */
 class Plugin
 {
@@ -35,13 +38,13 @@ class Plugin
       // This is all you need to do to enabled HMR w/ Snowpack.
       ev.data.importmeta = import.meta;
 
-      // Reload any state during HMR
+      // Reload any state during HMR.
       this.cntr = typeof ev.data.state === 'object' ? ev.data.state.cntr : 0;
 
       // Ensure the `this` context in the increment method and store it so it can be removed.
       this.boundIncrement = () => this.increment();
 
-      // Add the increment event listener to
+      // Add the increment event listener to button and set the current counter state to the label.
       document.getElementById('button').addEventListener('click', this.boundIncrement)
       document.getElementById('label').innerHTML = `${this.cntr}`;
 

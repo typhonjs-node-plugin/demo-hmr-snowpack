@@ -9,7 +9,7 @@ is to hook up HMR and event bindings for messaging between plugins in addition t
 
 Open up the dev console to see various console.log statements; or add your own as well!
 
-There is an added button `Increment Counter` which increments counter via an HTML label everytime it is pressed. The 
+There is an added button `Increment Counter` which increments a counter via an HTML label everytime it is pressed. The 
 counter will also be incremented everytime `Plugin.js` is modified / saved and HMR occurs. All control of the DOM 
 and counter are in `./src/Plugin.js`. There is also an event binding on `test:plugin:cntr:get` which returns the `cntr`
 variable value. `Plugin.js` show how to keep state between HMR cycles implementing both `onPluginLoad` and 
