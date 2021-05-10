@@ -5,7 +5,7 @@ class PluginSimple
 {
    onPluginLoad(ev)
    {
-      // This is all you need for HMR to be enabled w/ hot module replacement.
+      // This is all you need for HMR to be enabled.
       ev.data.importmeta = import.meta;
    }
 }
