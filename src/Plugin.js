@@ -57,7 +57,7 @@ class Plugin
     *
     * Note: If you do register event listeners to the DOM you are fully responsible for unregistering them.
     *
-    * However, any event listeners registered to the plugin manager eventbus above on `onPluginLoad` like
+    * However, any event listeners registered to the plugin manager eventbus above in `onPluginLoad` like
     * `test:plugin:cntr:get` are automatically unregistered during HMR.
     *
     * @param {object}   ev - PluginInvokeEvent
