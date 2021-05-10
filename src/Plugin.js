@@ -55,6 +55,11 @@ class Plugin
    /**
     * Invoked when a plugin is unloaded / reloaded.
     *
+    * Note: If you do register event listeners to the DOM you are fully responsible for unregistering them.
+    *
+    * However, any event listeners registered to the plugin manager eventbus above on `onPluginLoad` like
+    * `test:plugin:cntr:get` are automatically unregistered during HMR.
+    *
     * @param {object}   ev - PluginInvokeEvent
     */
    onPluginUnload(ev)
@@ -64,7 +69,7 @@ class Plugin
       // Save state between plugin unload to load during HMR.
       ev.data.state = { cntr: ++this.cntr };
 
-      // Unregister the increment event listener.
+      // Unregister the DOM increment event listener.
       document.getElementById('button').removeEventListener('click', this.boundIncrement)
    }
 }
