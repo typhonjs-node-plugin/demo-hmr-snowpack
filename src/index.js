@@ -14,16 +14,21 @@ import PluginManager  from '@typhonjs-plugin/manager';
 
 const pluginManager = new PluginManager();
 
-const hostname = window.location.hostname;
-const port = window.location.port;
-
-// Load the plugins by target from absolute paths. During Snowpack runtime `./src` becomes `./dist`. Relative paths
-// from the source code location will be supported soon for browser usage by @typhonjs-plugin/manager.
+// Load the plugins by target from absolute paths. During Snowpack runtime `./src` becomes `./dist`.
 pluginManager.add({ name: 'Plugin', target: '/dist/Plugin.js' });
-pluginManager.add({ name: 'Plugin2', target: '/dist/Plugin2.js' });
+
+// To load a relative path you need to construct an URL w/ import.meta.url
+pluginManager.add({ name: 'Plugin2', target: new URL('Plugin2.js', import.meta.url) });
+
+
+// The following plugins are empty implementations showing the bare minimum requirements for a default instantiated
+// class and bare module.
 
 // Shows how to load from URL from the hostname / port defined above.
-pluginManager.add({ name: 'PluginSimple', target: new URL(`http://${hostname}:${port}/dist/PluginSimple.js`) });
+pluginManager.add({ name: 'PluginSimple', target: new URL('PluginSimple.js', import.meta.url) });
+
+// Shows how to load from URL from the hostname / port defined above.
+pluginManager.add({ name: 'PluginModule', target: new URL('PluginModule.js', import.meta.url) });
 
 // Confetti launching from original base demo.
 confetti.create(document.getElementById('canvas'), {
