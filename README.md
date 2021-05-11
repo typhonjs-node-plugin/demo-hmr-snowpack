@@ -13,7 +13,8 @@ There is an added button `Increment Counter` which increments a counter via an H
 counter will also be incremented everytime `Plugin.js` is modified / saved and HMR occurs. All control of the DOM 
 and counter are in `./src/Plugin.js`. There is also an event binding on `test:plugin:cntr:get` which returns the `cntr`
 variable value. `Plugin.js` show how to keep state between HMR cycles implementing both `onPluginLoad` and 
-`onPluginUnload` which are two methods that `@typhonjs-plugin/manager` invokes when plugins load / unload / reload.
+`onPluginUnload` which are two methods that `@typhonjs-plugin/manager` invokes when plugins load / unload / reload. When
+HMR is triggered the plugin manager automatically reloads the plugin with the new module.
 
 `./src/Plugin2.js` registers on the `typhonjs:plugin:manager:plugin:reloaded` event which is passed a PluginData object
 describing which plugin reloaded. If the name of the reloaded plugin is `Plugin` it will trigger the 

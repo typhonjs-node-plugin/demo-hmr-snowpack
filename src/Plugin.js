@@ -35,10 +35,10 @@ class Plugin
    {
       console.log('Plugin - onPluginLoad');
 
-      // This is all you need to do to enabled HMR w/ Snowpack.
+      // This is all you need for HMR to be enabled.
       ev.data.importmeta = import.meta;
 
-      // Reload any state during HMR.
+      // Reload any state during HMR or set cntr to an initial state of 0.
       this.cntr = typeof ev.data.state === 'object' ? ev.data.state.cntr : 0;
 
       // Ensure the `this` context in the increment method and store it so it can be removed.
@@ -48,7 +48,7 @@ class Plugin
       document.getElementById('button').addEventListener('click', this.boundIncrement)
       document.getElementById('label').innerHTML = `${this.cntr}`;
 
-      // Register an event for Plugin2 to trigger and get the counter.
+      // Register an event on the plugin manager eventbus for Plugin2 to trigger and get the counter.
       ev.eventbus.on('test:plugin:cntr:get', this.getCntr, this, true);
    }
 

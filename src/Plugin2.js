@@ -29,7 +29,7 @@ class Plugin2
     */
    onPluginLoad(ev)
    {
-      // All you need to add to enabled HMR.
+      // This is all you need for HMR to be enabled.
       ev.data.importmeta = import.meta;
 
       // Store the eventbus so that it can be used in `printCntr`. When a plugin is unloaded this reference is reset
